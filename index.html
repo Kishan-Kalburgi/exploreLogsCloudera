@@ -23,7 +23,7 @@
                 <input class="form-control" id="comment" readonly value="solrctl --zk quickstart:2181/solr instancedir --generate solr_configs">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i onclick="copyText('comment')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
@@ -40,15 +40,15 @@
                 <input class="form-control" id="comment3" readonly value="cd /opt/examples/flume">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment3')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-10 form-group">
-                <input class="form-control" readonly value="solrctl --zk quickstart:2181/solr instancedir --create live_logs ./solr_configs">
+                <input class="form-control" readonly id="comment4" value="solrctl --zk quickstart:2181/solr instancedir --create live_logs ./solr_configs">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment4')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
@@ -56,10 +56,10 @@
                 <b>4. Creating your collection</b>
             </p>
             <div class="col-sm-10 form-group">
-                <input class="form-control" id="comment4" readonly value="solrctl --zk quickstart:2181/solr collection --create live_logs -s 1">
+                <input class="form-control" id="comment5" readonly value="solrctl --zk quickstart:2181/solr collection --create live_logs -s 1">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment5')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
@@ -75,41 +75,55 @@
         <div class="row">
             <p for="comment3"><b>7. Starting the Log Generator</b></p>
             <div class="col-sm-10 form-group">
-                <input class="form-control" id="comment3" readonly value="start_logs">
+                <input class="form-control" id="comment6" readonly value="start_logs">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment6')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
             <label for="comment3">8. You can verify that the log generator has started by running</label>
             <div class="col-sm-10 form-group">
-                <input class="form-control" id="comment3" readonly value="tail_logs">
+                <input class="form-control" id="comment7" readonly value="tail_logs">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment7')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
             <label for="comment3">9. Later, if you want to stop the log generator you can:</label>
             <div class="col-sm-10 form-group">
-                <input class="form-control" id="comment3" readonly value="tail_logs">
+                <input class="form-control" id="comment8" readonly value="tail_logs">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment8')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
         <div class="row">
             <label for="comment3">10. Flume and morphlines to load the index with the real-time log data</label>
             <div class="col-sm-10 form-group">
-                <input class="form-control" id="comment3" readonly value="flume-ng agent \ --conf /opt/examples/flume/conf \ --conf-file /opt/examples/flume/conf/flume.conf \ --name agent1 \ -Dflume.root.logger=DEBUG,INFO,console">
+                <input class="form-control" id="comment9" readonly value="flume-ng agent \ --conf /opt/examples/flume/conf \ --conf-file /opt/examples/flume/conf/flume.conf \ --name agent1 \ -Dflume.root.logger=DEBUG,INFO,console">
             </div>
             <div class="col-sm-2">
-                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+                <i  onclick="copyText('comment9')" class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
             </div>
         </div>
     </div>
+    <script>
+        function copyText(id) {
+        /* Get the text field */
+        var copyText = document.getElementById(id);
 
+        /* Select the text field */
+        copyText.select();
+
+        /* Copy the text inside the text field */
+        document.execCommand("Copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+        }
+    </script>
 </body>
 
 </html>
