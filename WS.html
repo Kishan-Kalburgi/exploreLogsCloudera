@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .icon {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Steps for Exploring the log events interactively</h2>
+        <div class="row">
+            <label for="comment">1. Creating an empty configuration</label>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment" readonly value="solrctl --zk quickstart:2181/solr instancedir --generate solr_configs">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <label for="comment2">2. Edit your schema</label>
+            <div class="col-sm-12 form-group">
+                <p>Link to Schema :
+                    <a target="_blank" href="http://quickstart.cloudera/media/schema.xml.txt">See the schema here</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <label for="comment3">3. Uploading your configuration</label>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment3" readonly value="cd /opt/examples/flume">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 form-group">
+                <input class="form-control" readonly value="solrctl --zk quickstart:2181/solr instancedir --create live_logs ./solr_configs">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <p for="comment4">
+                <b>4. Creating your collection</b>
+            </p>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment4" readonly value="solrctl --zk quickstart:2181/solr collection --create live_logs -s 1">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+                <b>5. Verify your collection in Solr by going to Hue, and clicking Indexes</b>
+            </p>
+        </div>
+        <div class="row">
+            <p >
+                <b>6. You can see the collection that we just created, live_logs, click on it.</b>
+            </p>
+        </div>
+        <div class="row">
+            <p for="comment3"><b>7. Starting the Log Generator</b></p>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment3" readonly value="start_logs">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <label for="comment3">8. You can verify that the log generator has started by running</label>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment3" readonly value="tail_logs">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <label for="comment3">9. Later, if you want to stop the log generator you can:</label>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment3" readonly value="tail_logs">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="row">
+            <label for="comment3">10. Flume and morphlines to load the index with the real-time log data</label>
+            <div class="col-sm-10 form-group">
+                <input class="form-control" id="comment3" readonly value="flume-ng agent \ --conf /opt/examples/flume/conf \ --conf-file /opt/examples/flume/conf/flume.conf \ --name agent1 \ -Dflume.root.logger=DEBUG,INFO,console">
+            </div>
+            <div class="col-sm-2">
+                <i class="glyphicon glyphicon-paste icon" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
